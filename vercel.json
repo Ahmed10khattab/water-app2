@@ -1,5 +1,5 @@
 {
-  "version":2,
+  "version": 2,
   "builds": [
     {
       "src": "./index.js",
@@ -8,8 +8,27 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "https://water-app-seven.vercel.app/api/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "http://localhost:5173"
+        },
+        {
+          "key": "Access-Control-Allow-Credentials",
+          "value": "true"
+        }
+      ]
     }
   ]
 }
